@@ -1,0 +1,51 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: base-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: base_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d base_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Optional: runs the Spring Boot application containerized alongside Postgres
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: base-app
+    restart: on-failure
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: base_db
+      DB_USER: postgres
+      DB_PASSWORD: postgrespassword
+    ports:
+      - "8082:8082"
+
+  adminer:
+    image: adminer:latest
+    container_name: base-adminer
+    restart: always
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
