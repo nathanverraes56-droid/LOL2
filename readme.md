@@ -1,3 +1,6 @@
+#Groupe :
+Verraes Nathan 
+Ravinet Pierre-Louis 
 # baseSpringBoot
 
 A Spring Boot application using Java 21, Maven, and PostgreSQL. Docker Compose starts the application and its database together.
