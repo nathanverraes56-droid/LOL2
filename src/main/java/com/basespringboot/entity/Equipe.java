@@ -18,6 +18,6 @@ public class Equipe {
     private String nom;
 
     // Le mappedBy indique que la relation est gérée par l'attribut "equipe" dans la classe Champ
-    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL, orphanRemoval = true)
+   @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Champ> champions = new ArrayList<>();
 }
