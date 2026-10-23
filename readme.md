@@ -1,6 +1,10 @@
 #Groupe :
 Verraes Nathan 
-Ravinet Pierre-Louis 
+Ravinet Pierre-Louis
+
+L'objet Champ correspond à un champion de League of Legends avec ses différentes caractéristiques (sexe, role, espece, ressource qu'il utilise, sa portée d'attaque, la region à laquelle il est rattaché et son année de sortie).
+L'objet Equipe correspond à une liste de champions (maximum 5).
+
 # baseSpringBoot
 
 A Spring Boot application using Java 21, Maven, and PostgreSQL. Docker Compose starts the application and its database together.
