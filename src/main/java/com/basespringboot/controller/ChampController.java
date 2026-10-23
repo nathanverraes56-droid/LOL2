@@ -59,7 +59,6 @@ public class ChampController {
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Champ patch(@PathVariable Long id, @RequestBody ChampDto form) {
-        // Note : @Valid retiré ici pour autoriser l'envoi d'un DTO incomplet lors d'une mise à jour partielle
         return champS.patch(id, form);
     }
 
