@@ -1,5 +1,7 @@
 package com.basespringboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,5 +23,10 @@ public class Champ {
     private String portee;
     private String region;
     private int annee;
-
+    
+    // --- NOUVEAUX CHAMPS AJOUTÉS ---
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    @JsonIgnore // Empêche la boucle infinie (Equipe -> Champ -> Equipe -> ...) en JSON
+    private Equipe equipe;
 }

@@ -17,5 +17,7 @@ public class ChampDto {
     private String portee;
     private String region;
     private int annee;
+
+    private Long equipeId;
     
 }
