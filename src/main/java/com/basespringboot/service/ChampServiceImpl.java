@@ -34,10 +34,10 @@ public class ChampServiceImpl implements ChampService {
         
         if (champDto.getEquipeId() != null) {
             Equipe equipe = equipeRepository.findById(champDto.getEquipeId())
-                    .orElseThrow(() -> new RuntimeException("Equipe introuvable avec l'ID : " + champDto.getEquipeId()));
+                    .orElseThrow(() -> new RuntimeException("Team not found with ID: " + champDto.getEquipeId()));
             
             if (equipe.getChampions().size() >= 5) {
-                throw new RuntimeException("Impossible d'ajouter le champion : l'équipe a déjà atteint la limite de 5 joueurs.");
+                throw new RuntimeException("Cannot add champion: the team has already reached the limit of 5 players.");
             }
             champ.setEquipe(equipe);
         }
@@ -53,14 +53,14 @@ public class ChampServiceImpl implements ChampService {
     @Override
     public Champ findById(Long id) {
         return champRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Champ introuvable avec l'ID : " + id));
+                .orElseThrow(() -> new RuntimeException("Champion not found with ID: " + id));
     }
 
     @Override
     public Champ update(Long id, ChampDto formDto) {
         Champ champ = findById(id);
         
-        // Remplacement intégral (PUT)
+        // Full replacement (PUT)
         champ.setNom(formDto.getNom());
         champ.setSexe(formDto.getSexe());
         champ.setRole(formDto.getRole());
@@ -72,16 +72,16 @@ public class ChampServiceImpl implements ChampService {
 
         if (formDto.getEquipeId() != null) {
             Equipe equipe = equipeRepository.findById(formDto.getEquipeId())
-                    .orElseThrow(() -> new RuntimeException("Equipe introuvable avec l'ID : " + formDto.getEquipeId()));
+                    .orElseThrow(() -> new RuntimeException("Team not found with ID: " + formDto.getEquipeId()));
             
-            // On vérifie la limite de la nouvelle équipe uniquement si le champion n'y était pas déjà
+            // Check the limit of the new team only if the champion was not already in it
             if ((champ.getEquipe() == null || !champ.getEquipe().getId().equals(equipe.getId())) 
                 && equipe.getChampions().size() >= 5) {
-                throw new RuntimeException("L'équipe cible est déjà complète (5 champions).");
+                throw new RuntimeException("Target team is already full (5 champions).");
             }
             champ.setEquipe(equipe);
         } else {
-            champ.setEquipe(null); // Retire le champion de l'équipe si l'ID n'est pas fourni dans la requête
+            champ.setEquipe(null); // Removes the champion from the team if the ID is not provided in the request
         }
 
         return champRepository.save(champ);
@@ -91,7 +91,7 @@ public class ChampServiceImpl implements ChampService {
     public Champ patch(Long id, ChampDto formDto) {
         Champ champ = findById(id);
         
-        // Mise à jour partielle (PATCH)
+        // Partial update (PATCH)
         if (formDto.getNom() != null && !formDto.getNom().isBlank()) champ.setNom(formDto.getNom());
         if (formDto.getSexe() != null && !formDto.getSexe().isBlank()) champ.setSexe(formDto.getSexe());
         if (formDto.getRole() != null && !formDto.getRole().isBlank()) champ.setRole(formDto.getRole());
@@ -103,11 +103,11 @@ public class ChampServiceImpl implements ChampService {
         
         if (formDto.getEquipeId() != null) {
             Equipe equipe = equipeRepository.findById(formDto.getEquipeId())
-                    .orElseThrow(() -> new RuntimeException("Equipe introuvable avec l'ID : " + formDto.getEquipeId()));
+                    .orElseThrow(() -> new RuntimeException("Team not found with ID: " + formDto.getEquipeId()));
             
             if ((champ.getEquipe() == null || !champ.getEquipe().getId().equals(equipe.getId())) 
                 && equipe.getChampions().size() >= 5) {
-                throw new RuntimeException("L'équipe cible est déjà complète (5 champions).");
+                throw new RuntimeException("Target team is already full (5 champions).");
             }
             champ.setEquipe(equipe);
         }

@@ -30,6 +30,6 @@ public class EquipeServiceImpl implements EquipeService {
     @Override
     public Equipe findById(Long id) {
         return equipeRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Équipe introuvable avec l'ID : " + id));
+                .orElseThrow(() -> new RuntimeException("Team not found with ID: " + id));
     }
 }

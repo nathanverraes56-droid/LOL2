@@ -24,9 +24,9 @@ public class Champ {
     private String region;
     private int annee;
     
-    // --- NOUVEAUX CHAMPS AJOUTÉS ---
+    // --- NEW FIELDS ADDED ---
     @ManyToOne
     @JoinColumn(name = "equipe_id")
-    @JsonIgnore // Empêche la boucle infinie (Equipe -> Champ -> Equipe -> ...) en JSON
+    @JsonIgnore // Prevents infinite recursion (Team -> Champion -> Team -> ...) in JSON output
     private Equipe equipe;
 }

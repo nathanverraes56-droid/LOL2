@@ -34,40 +34,38 @@ public class ChampController {
      return champS.save(champ);
     }
 
-   // GET : Lecture (Liste)
+    // GET: Read (List)
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Champ> findAll() {
         return champS.findAll();
     }
 
-    // GET : Lecture (Élément unique)
+    // GET: Read (Single element)
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Champ findById(@PathVariable Long id) {
         return champS.findById(id);
     }
 
-    // PUT : Remplacement
+    // PUT: Full replacement
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Champ update(@PathVariable Long id, @Valid @RequestBody ChampDto form) {
         return champS.update(id, form);
     }
 
-    // PATCH : Mise à Jour (partielle)
+    // PATCH: Partial update
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Champ patch(@PathVariable Long id, @RequestBody ChampDto form) {
         return champS.patch(id, form);
     }
 
-    // DELETE : Suppression
+    // DELETE: Deletion
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         champS.delete(id);
     }
-
-    
 }
