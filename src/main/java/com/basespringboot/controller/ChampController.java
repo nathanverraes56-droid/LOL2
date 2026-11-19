@@ -20,6 +20,7 @@ import com.basespringboot.entity.Champ;
 import com.basespringboot.service.ChampService;
 import com.basespringboot.service.ExternalApiService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +32,7 @@ public class ChampController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+@SecurityRequirement(name = "bearerAuth")
     public Champ save(@Valid @RequestBody ChampDto champ){
      return champS.save(champ);
     }
@@ -52,6 +54,7 @@ public class ChampController {
     // PUT: Full replacement
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+@SecurityRequirement(name = "bearerAuth")
     public Champ update(@PathVariable Long id, @Valid @RequestBody ChampDto form) {
         return champS.update(id, form);
     }
@@ -59,6 +62,7 @@ public class ChampController {
     // PATCH: Partial update
     @PatchMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+@SecurityRequirement(name = "bearerAuth")
     public Champ patch(@PathVariable Long id, @RequestBody ChampDto form) {
         return champS.patch(id, form);
     }
@@ -66,6 +70,7 @@ public class ChampController {
     // DELETE: Deletion
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+@SecurityRequirement(name = "bearerAuth")
     public void delete(@PathVariable Long id) {
         champS.delete(id);
     }

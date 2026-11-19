@@ -3,6 +3,8 @@ package com.basespringboot.controller;
 import com.basespringboot.dto.EquipeDto;
 import com.basespringboot.entity.Equipe;
 import com.basespringboot.service.EquipeService;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,7 @@ public class EquipeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @SecurityRequirement(name = "bearerAuth")
     public Equipe save(@Valid @RequestBody EquipeDto equipeDto) {
         return equipeService.save(equipeDto);
     }
