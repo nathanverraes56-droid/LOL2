@@ -18,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import com.basespringboot.dto.ChampDto;
 import com.basespringboot.entity.Champ;
 import com.basespringboot.service.ChampService;
+import com.basespringboot.service.ExternalApiService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -68,4 +69,14 @@ public class ChampController {
     public void delete(@PathVariable Long id) {
         champS.delete(id);
     }
+
+    // Ajoutez l'injection dans ChampController :
+private final ExternalApiService externalApiService;
+
+// Exemple d'endpoint qui va interroger l'API officielle de League of Legends (Data Dragon)
+@GetMapping("/external-lol")
+public String getOfficialLolData() {
+    String url = "https://ddragon.leagueoflegends.com/cdn/14.22.1/data/fr_FR/champion/Ahri.json";
+    return externalApiService.getExternalData(url);
+}
 }
