@@ -1,0 +1,32 @@
+info:
+  name: Authentification_par_header
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:8084/champ
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc5NTEwMDE1OSwiZXhwIjoxNzk1MTg2NTU5fQ.WwxkKJiazp9d6OUbpCp8n1Y0OC59ePV9BXXQ52FhEs0
+  body:
+    type: json
+    data: |-
+      {
+        "nom": "Garen",
+        "sexe": "Homme",
+        "role": "Combattant",
+        "espece": "Humain",
+        "ressource": "Aucune",
+        "portee": "Mêlée",
+        "region": "Demacia",
+        "annee": 2010
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

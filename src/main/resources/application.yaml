@@ -19,3 +19,7 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
+  
+  app:
+  title: API League of Legends
+  version: 1.0.0
