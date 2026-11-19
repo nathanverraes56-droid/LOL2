@@ -10,7 +10,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
     
-    // Génère une clé secrète sécurisée en mémoire au lancement
+    //Create a secured secret key in the memory when it launch
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long EXPIRATION_TIME = 86400000; // Valide 24 heures
 

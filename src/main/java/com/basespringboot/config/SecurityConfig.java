@@ -35,7 +35,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager(); // Permet au contrôleur de vérifier les identifiants
+        return config.getAuthenticationManager(); // Enable the controller to check the id.
     }
 
     @Bean

@@ -18,11 +18,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody AuthRequest authRequest) {
-        // Vérifie que l'utilisateur existe avec le bon mot de passe
+        // Check that the user exist with the right password
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
-        // Génère et retourne le Bearer Token
+        // Create and return The Bearer Token
         return jwtUtil.generateToken(authRequest.getUsername());
     }
 }
