@@ -70,10 +70,10 @@ public class ChampController {
         champS.delete(id);
     }
 
-    // Ajoutez l'injection dans ChampController :
+    // Ad in ChampController :
 private final ExternalApiService externalApiService;
 
-// Exemple d'endpoint qui va interroger l'API officielle de League of Legends (Data Dragon)
+// Endpoint which uses the official API ofLeague of Legends (Data Dragon) 
 @GetMapping("/external-lol")
 public String getOfficialLolData() {
     String url = "https://ddragon.leagueoflegends.com/cdn/14.22.1/data/fr_FR/champion/Ahri.json";

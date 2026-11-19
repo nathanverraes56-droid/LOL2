@@ -10,7 +10,7 @@ public class ExternalApiService {
 
     private final RestClient restClient;
 
-    // Exemple 1 : Récupérer la réponse brute en JSON (String)
+    // Exemple 1 : Get the answer in JSON (String) format.
     public String getExternalData(String url) {
         return restClient.get()
                 .uri(url)
@@ -18,8 +18,8 @@ public class ExternalApiService {
                 .body(String.class);
     }
 
-    // Exemple 2 : Convertir directement le JSON reçu en un objet Java (DTO)
-    // Utile si l'API externe renvoie un format connu (ex: {"title": "...", "body": "..."})
+    // Exemple 2 : Transform the JSON in a Java Object (DTO) 
+    // Uselful if the externe API return a known format (ex: {"title": "...", "body": "..."})
     public <T> T getExternalObject(String url, Class<T> responseType) {
         return restClient.get()
                 .uri(url)
