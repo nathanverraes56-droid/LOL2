@@ -1,0 +1,473 @@
+opencollection: 1.0.0
+info:
+  name: LOL
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ''
+      port: ''
+      auth:
+        username: ''
+        password: ''
+      bypassProxy: ''
+items:
+  - info:
+      name: Post_1_Garen
+      type: http
+      seq: 1
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Garen",
+            "sexe": "Homme",
+            "role": "Combattant",
+            "espece": "Humain",
+            "ressource": "Aucune",
+            "portee": "Mêlée",
+            "region": "Demacia",
+            "annee": 2010
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Get_1_Garen
+      type: http
+      seq: 2
+    http:
+      method: GET
+      url: http://localhost:8084/champ/1
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Delete_1_Garen
+      type: http
+      seq: 3
+    http:
+      method: DELETE
+      url: http://localhost:8084/champ/1
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Get_Global
+      type: http
+      seq: 5
+    http:
+      method: GET
+      url: http://localhost:8084/champ
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Patch_nom_Garen
+      type: http
+      seq: 6
+    http:
+      method: PATCH
+      url: http://localhost:8084/champ/3
+      body:
+        type: json
+        data: |-
+          {
+            "name" : "ahri"
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Put_Garen_en_Lee_Sin
+      type: http
+      seq: 4
+    http:
+      method: PUT
+      url: http://localhost:8084/champ/1
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Lee Sin",
+            "sexe": "Homme",
+            "role": "Assassin",
+            "espece": "Humain",
+            "ressource": "Énergie",
+            "portee": "Mêlée",
+            "region": "Ionia",
+            "annee": 2011
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Création_equipe_1
+      type: http
+      seq: 7
+    http:
+      method: POST
+      url: http://localhost:8084/equipe
+      body:
+        type: json
+        data: |-
+          {
+            "nom" : "Blue"
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Top_equipe_1
+      type: http
+      seq: 8
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Garen",
+            "sexe": "Homme",
+            "role": "Combattant",
+            "espece": "Humain",
+            "ressource": "Aucune",
+            "portee": "Mêlée",
+            "region": "Demacia",
+            "annee": 2010,
+            "equipeId": 1
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Jungle_equipe_1
+      type: http
+      seq: 10
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Lee Sin",
+            "sexe": "Homme",
+            "role": "Assassin",
+            "espece": "Humain",
+            "ressource": "Énergie",
+            "portee": "Mêlée",
+            "region": "Ionia",
+            "annee": 2011,
+            "equipeId": 1
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Mid_equipe_1
+      type: http
+      seq: 11
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Ahri",
+            "sexe": "Femme",
+            "role": "Mage",
+            "espece": "Vastaya",
+            "ressource": "Mana",
+            "portee": "Distance",
+            "region": "Ionia",
+            "annee": 2011,
+            "equipeId": 1
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Bot_equipe_1
+      type: http
+      seq: 12
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Jinx",
+            "sexe": "Femme",
+            "role": "Tireur",
+            "espece": "Humain",
+            "ressource": "Mana",
+            "portee": "Distance",
+            "region": "Zaun",
+            "annee": 2013,
+            "equipeId": 1
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Support_equipe_1
+      type: http
+      seq: 13
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+            "nom": "Thresh",
+            "sexe": "Homme",
+            "role": "Support",
+            "espece": "Spectre",
+            "ressource": "Mana",
+            "portee": "Distance",
+            "region": "Îles Obscures",
+            "annee": 2013,
+            "equipeId": 1
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Get_Global_equipe
+      type: http
+      seq: 9
+    http:
+      method: GET
+      url: http://localhost:8084/equipe
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Top_equipe_2
+      type: http
+      seq: 15
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+              "nom": "Darius",
+              "sexe": "Homme",
+              "role": "Top",
+              "espece": "Humain",
+              "ressource": "Mana",
+              "portee": "Mêlée",
+              "region": "Noxus",
+              "annee": 2012,
+              "equipeId": 2
+            }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Création_equipe_2
+      type: http
+      seq: 14
+    http:
+      method: POST
+      url: http://localhost:8084/equipe
+      body:
+        type: json
+        data: |-
+          {
+            "nom" : "Red"
+          }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Jungle_equipe_2
+      type: http
+      seq: 16
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+              "nom": "Vi",
+              "sexe": "Femme",
+              "role": "Jungle",
+              "espece": "Humain",
+              "ressource": "Mana",
+              "portee": "Mêlée",
+              "region": "Piltover",
+              "annee": 2012,
+              "equipeId": 2
+            }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Mid_equipe_2
+      type: http
+      seq: 17
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+              "nom": "Azir",
+              "sexe": "Homme",
+              "role": "Mid",
+              "espece": "Transfiguré",
+              "ressource": "Mana",
+              "portee": "Distance",
+              "region": "Shurima",
+              "annee": 2014,
+              "equipeId": 2
+            }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Bot_equipe_2
+      type: http
+      seq: 18
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+              "nom": "Jhin",
+              "sexe": "Homme",
+              "role": "Tireur",
+              "espece": "Humain",
+              "ressource": "Mana",
+              "portee": "Distance",
+              "region": "Ionia",
+              "annee": 2016,
+              "equipeId": 2
+            }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+  - info:
+      name: Post_Support_equipe_2
+      type: http
+      seq: 19
+    http:
+      method: POST
+      url: http://localhost:8084/champ
+      body:
+        type: json
+        data: |-
+          {
+              "nom": "Alistar",
+              "sexe": "Homme",
+              "role": "Support",
+              "espece": "Minotaure",
+              "ressource": "Mana",
+              "portee": "Mêlée",
+              "region": "Runeterra",
+              "annee": 2009,
+              "equipeId": 2
+            }
+      auth: inherit
+    settings:
+      encodeUrl: true
+      timeout: 0
+      followRedirects: true
+      maxRedirects: 5
+      forwardAuthorizationHeader: false
+bundled: true
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    exportedAt: '2026-11-19T15:43:18.111Z'
+    exportedUsing: Bruno
