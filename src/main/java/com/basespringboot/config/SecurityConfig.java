@@ -24,11 +24,11 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/login").permitAll() // Autorise l'accès à la route pour récupérer le token
+                .requestMatchers("/auth/login").permitAll() // Autorize the acces to the route to get the token
                 .requestMatchers(HttpMethod.GET, "/**").permitAll() 
                 .anyRequest().authenticated()
             )
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // Injecte le filtre JWT
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); //Ad the JWT filter
         
         return http.build();
     }

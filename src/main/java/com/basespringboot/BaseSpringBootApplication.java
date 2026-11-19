@@ -21,15 +21,15 @@ public class BaseSpringBootApplication {
     @Bean
     public CommandLineRunner initDatabase(EquipeRepository equipeRepository, ChampRepository champRepository) {
         return args -> {
-            // Vérifie si la base est vide pour éviter les doublons si vous passez en ddl-auto: update plus tard
+            // Check if the database is empty to dodge the duplicate if you switch to ddl-auto: update later 
             if (equipeRepository.count() == 0 && champRepository.count() == 0) {
                 
-                // 1. Création et sauvegarde de l'équipe
+                // 1. Creation and saves of the team
                 Equipe t1 = new Equipe();
                 t1.setNom("T1");
                 equipeRepository.save(t1);
 
-                // 2. Création des 5 champions liés à l'équipe
+                // 2. Creation of the 5 champions in the team
                 Champ garen = new Champ();
                 garen.setNom("Garen");
                 garen.setSexe("Homme");
@@ -85,7 +85,7 @@ public class BaseSpringBootApplication {
                 thresh.setAnnee(2013);
                 thresh.setEquipe(t1);
 
-                // 3. Sauvegarde groupée en base de données
+                // 3. SSave in database
                 champRepository.saveAll(List.of(garen, leeSin, ahri, jinx, thresh));
 
                 System.out.println("Base de données initialisée avec l'équipe T1 et ses 5 champions.");
