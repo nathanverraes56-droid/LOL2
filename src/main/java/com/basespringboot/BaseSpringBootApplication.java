@@ -85,7 +85,7 @@ public class BaseSpringBootApplication {
                 thresh.setAnnee(2013);
                 thresh.setEquipe(t1);
 
-                // 3. SSave in database
+                // 3. Save in database
                 champRepository.saveAll(List.of(garen, leeSin, ahri, jinx, thresh));
 
                 System.out.println("Base de données initialisée avec l'équipe T1 et ses 5 champions.");
